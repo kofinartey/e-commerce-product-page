@@ -1,0 +1,114 @@
+nav {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  display: flex;
+  width: 90%;
+  height: 4.25rem;
+  /* padding: 1rem 0; */
+
+  /* background-color: grey; */
+  /* justify-content: space-between; */
+  align-items: center;
+}
+.menuAndLogo {
+  margin-right: auto;
+}
+.logo {
+}
+.menuIcon {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.overlay {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: -100rem;
+  color: white;
+  background-color: white;
+  height: 100vh;
+  width: 70%;
+  transition: left ease-in-out 0.3s;
+}
+.mobileMenu .closeIcon {
+  width: 1rem;
+  margin: 2rem 0 4rem 7%;
+}
+.mobileMenu a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  padding: 0.5rem 7%;
+}
+.mobileMenu a:hover {
+  color: hsl(26, 100%, 55%);
+}
+.desktopMenu {
+  margin-right: auto;
+  display: none;
+  height: 100%;
+}
+.desktopMenu a div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  /* background-color: red; */
+}
+.desktopMenu a {
+  text-decoration: none;
+  margin-right: 2rem;
+  color: hsl(220, 14%, 75%);
+  height: 100%;
+  border-bottom: 0.3rem solid white;
+  transition: all ease-in-out 0.2s;
+}
+.desktopMenu a:hover {
+  color: hsl(26, 100%, 55%);
+  border-bottom: 0.3rem solid hsl(26, 100%, 55%);
+}
+.cartAndAvatar {
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 2rem;
+}
+
+@media screen and (min-width: 64rem) {
+  .wrapper {
+    width: 80%;
+    height: 112px;
+    /* padding: 2rem 0; */
+    border-bottom: 1px solid hsl(220, 14%, 75%);
+  }
+  .mobileMenu {
+    display: none;
+  }
+  .desktopMenu {
+    display: flex;
+    align-items: center;
+  }
+  .menuIcon {
+    display: none;
+  }
+  .menuAndLogo {
+    margin-right: 3rem;
+  }
+}
