@@ -1,0 +1,82 @@
+.window {
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+.imagesWrapper {
+  width: 100%;
+  display: flex;
+  position: relative;
+  left: -100%;
+  transition: left ease-in 0.3s;
+}
+.image {
+  width: 100%;
+}
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 48%;
+  /* top: 0; */
+  padding: 0 5%;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+.arrow {
+  background-color: white;
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.arrow:hover {
+  opacity: 0.8;
+}
+.arrow img {
+  width: 0.6rem;
+  margin: auto;
+}
+
+.thumbnailWrapper {
+  display: none;
+}
+.thumbnail {
+  width: 7rem;
+  border-radius: 0.5rem;
+  border: 0.2rem solid hsl(26, 100%, 55%);
+  cursor: pointer;
+  transition: all ease-in-out 0.2s;
+}
+.thumbnail:hover {
+  opacity: 0.5;
+}
+
+@media (min-width: 48rem) {
+  .carousel {
+    display: flex;
+    justify-content: center;
+  }
+  .carousel .wrapper {
+    width: 90%;
+    display: flex;
+    padding: 4rem;
+  }
+  .window {
+    width: 80%;
+    border-radius: 1rem;
+  }
+  .thumbnailWrapper {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .thumbnail {
+    width: 6rem;
+  }
+}

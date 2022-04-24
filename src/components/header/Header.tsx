@@ -37,8 +37,10 @@ function Header() {
           ))}
         </div>
 
+        {/* overlay */}
         <div
           className={styles.overlay}
+          onClick={toggleMenu}
           style={
             showMobileMenu
               ? {
