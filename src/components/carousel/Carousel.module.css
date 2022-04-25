@@ -47,9 +47,9 @@
 .thumbnail {
   width: 7rem;
   border-radius: 0.5rem;
-  border: 0.2rem solid hsl(26, 100%, 55%);
+  border: 0.2rem solid white;
   cursor: pointer;
-  transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.3s;
 }
 .thumbnail:hover {
   opacity: 0.5;
@@ -67,6 +67,7 @@
   }
   .window {
     width: 80%;
+    background-color: lightblue;
     border-radius: 1rem;
   }
   .thumbnailWrapper {
@@ -78,5 +79,24 @@
   }
   .thumbnail {
     width: 6rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .carousel .wrapper {
+    width: 100%;
+    padding: 0;
+    flex-direction: column;
+  }
+  .window {
+    width: 100%;
+  }
+  .thumbnailWrapper {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 2rem;
+  }
+  .thumbnail {
+    width: 22%;
   }
 }

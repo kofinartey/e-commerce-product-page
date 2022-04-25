@@ -42,7 +42,6 @@ function Carousel() {
     } else {
       setCarouselPosition((curState) => curState + 1);
     }
-    console.log(carouselPosition);
   };
 
   const leftStyles = () => {
@@ -97,7 +96,18 @@ function Carousel() {
             <img
               src={process.env.PUBLIC_URL + `${image.thumbnail}`}
               className={styles.thumbnail}
+              style={
+                carouselPosition === image.id
+                  ? {
+                      border: "0.2rem solid hsl(26, 100%, 55%)",
+                      opacity: "0.5",
+                    }
+                  : {}
+              }
               key={image.id}
+              onClick={() => {
+                setCarouselPosition(image.id);
+              }}
               alt={`thumbnail ${image.id}`}
             />
           ))}
