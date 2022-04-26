@@ -1,0 +1,44 @@
+.Cart {
+  /* width: 90%; */
+  width: 22.5rem;
+  max-width: 22.5rem;
+  min-height: 15rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  position: absolute;
+  right: 5%;
+  top: 4rem;
+  z-index: 2;
+}
+.Cart .title {
+  margin-bottom: 1rem;
+}
+.cartItems {
+  margin-top: 2rem;
+}
+.empty {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 3rem;
+}
+.item {
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 1rem 0;
+}
+.item img {
+  width: 3rem;
+  border-radius: 0.2rem;
+  margin-right: 1rem;
+}
+.item span {
+  font-weight: bold;
+  color: black;
+}
+.cartItems .deleteIcon {
+  width: 1.2rem;
+  margin-left: auto;
+}

@@ -1,17 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
+import Cart from "../cart/Cart";
 import styles from "./Header.module.css";
 import menuIcon from "../../assets/images/icon-menu.svg";
 import closeIcon from "../../assets/images/icon-close.svg";
 import cartIcon from "../../assets/images/icon-cart.svg";
 import logo from "../../assets/images/logo.svg";
 import avatar from "../../assets/images/image-avatar.png";
+import { CartItemInterface } from "../../types";
 
-function Header() {
+type HeaderProps = {
+  cartData: CartItemInterface[];
+  removeFromCart: (a: string) => void;
+};
+
+function Header({ cartData, removeFromCart }: HeaderProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+
+  //recalculate cartCount
+  useEffect(() => {
+    let x: number = 0;
+    cartData.forEach((item) => {
+      x = x + item.qty;
+    });
+    setCartCount(x);
+  }, [cartData]);
 
   const toggleMenu = () => {
     setShowMobileMenu(!showMobileMenu);
+  };
+
+  const toggleCart = () => {
+    setShowCart(!showCart);
   };
 
   const menuItems = ["Collections", "Men", "Women", "About", "Contact"];
@@ -40,17 +62,25 @@ function Header() {
         {/* overlay */}
         <div
           className={styles.overlay}
-          onClick={toggleMenu}
+          onClick={() => {
+            if (showMobileMenu) setShowMobileMenu(false);
+            if (showCart) setShowCart(false);
+          }}
           style={
             showMobileMenu
               ? {
                   opacity: 1,
                   pointerEvents: "all",
                 }
+              : showCart
+              ? {
+                  pointerEvents: "all",
+                }
               : {}
           }
         ></div>
 
+        {/* mobile menu. Hidden by default */}
         <div
           className={styles.mobileMenu}
           style={{ left: showMobileMenu ? 0 : "" }}
@@ -69,8 +99,18 @@ function Header() {
         </div>
 
         <div className={styles.cartAndAvatar}>
-          <img src={cartIcon} alt="cart icon" />
+          <div className={styles.cartIcon}>
+            {cartCount > 0 && (
+              <div className={styles.cartBadge}>{cartCount}</div>
+            )}
+            <img src={cartIcon} onClick={toggleCart} alt="cart icon" />
+          </div>
           <img src={avatar} className={styles.avatar} alt="avatar" />
+          <div className={styles.cartWrapper}>
+            {showCart && (
+              <Cart cartData={cartData} removeFromCart={removeFromCart} />
+            )}
+          </div>
         </div>
       </div>
     </nav>

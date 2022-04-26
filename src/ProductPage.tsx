@@ -1,4 +1,5 @@
-import React from "react";
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Carousel from "./components/carousel/Carousel";
 import Header from "./components/header/Header";
 
@@ -7,11 +8,42 @@ import plusIcon from "./assets/images/icon-plus.svg";
 import minusIcon from "./assets/images/icon-minus.svg";
 import cartIcon from "./assets/images/icon-cart.svg";
 import Button from "./components/button/Button";
+import { CartItemInterface } from "./types";
+
+const product = {
+  name: "Autum Limited Edition",
+  price: 125.0,
+  image: "/images/image-product-1-thumbnail.jpg",
+};
 
 function ProductPage() {
+  const [cartData, setCartData] = useState<CartItemInterface[]>([]);
+  const [items, setItems] = useState(0);
+
+  //event handlers
+  const addItem = () => {
+    setItems((curstate) => curstate + 1);
+  };
+  const removeItem = () => {
+    if (items === 0) return;
+    setItems((curstate) => curstate - 1);
+  };
+  const addToCart = () => {
+    if (items > 0) {
+      setCartData((curState) => [
+        ...curState,
+        { ...product, id: uuidv4(), qty: items },
+      ]);
+    }
+    setItems(0);
+  };
+  const removeFromCart = (id: string) => {
+    setCartData((curState) => curState.filter((item) => item.id !== id));
+  };
+
   return (
     <>
-      <Header />
+      <Header cartData={cartData} removeFromCart={removeFromCart} />
       <main>
         <div className={styles.carouselContainer}>
           <Carousel />
@@ -35,11 +67,13 @@ function ProductPage() {
 
             <div className={styles.buttonsWrapper}>
               <div className={styles.itemCount}>
-                <img src={minusIcon} alt="" />
-                <p>0</p>
-                <img src={plusIcon} alt="" />
+                <img src={minusIcon} onClick={removeItem} alt="" />
+                <p>{items}</p>
+                <img src={plusIcon} onClick={addItem} alt="" />
               </div>
-              <Button leftIcon={cartIcon}>Add to Cart</Button>
+              <Button leftIcon={cartIcon} onClick={addToCart}>
+                Add to Cart
+              </Button>
             </div>
           </div>
         </section>

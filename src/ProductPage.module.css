@@ -54,13 +54,15 @@ main {
   align-items: center;
   justify-content: space-between;
   background-color: hsl(223, 64%, 98%);
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
   margin: 1rem 0;
   font-weight: bold;
 }
-.button {
-  width: 100%;
+
+.itemCount img {
+  cursor: pointer;
+  padding: 0.5rem;
 }
 
 @media (min-width: 48rem) {
