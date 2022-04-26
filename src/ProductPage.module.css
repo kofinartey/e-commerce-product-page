@@ -66,6 +66,9 @@ main {
 }
 
 @media (min-width: 48rem) {
+  .productDetails h1 {
+    font-size: 3rem;
+  }
   .buttonsWrapper {
     display: flex;
     justify-content: space-between;
