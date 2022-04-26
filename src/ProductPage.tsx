@@ -38,6 +38,8 @@ function ProductPage() {
     setItems(0);
   };
   const removeFromCart = (id: string) => {
+    console.log("remove called");
+    console.log(id);
     setCartData((curState) => curState.filter((item) => item.id !== id));
   };
 

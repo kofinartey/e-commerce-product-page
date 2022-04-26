@@ -97,6 +97,7 @@ nav {
   margin-left: 2rem;
 }
 .cartIcon {
+  cursor: pointer;
 }
 .cartBadge {
   padding: 0.1rem 0.5rem;

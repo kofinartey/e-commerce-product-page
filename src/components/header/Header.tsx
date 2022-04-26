@@ -75,6 +75,7 @@ function Header({ cartData, removeFromCart }: HeaderProps) {
               : showCart
               ? {
                   pointerEvents: "all",
+                  zIndex: 2,
                 }
               : {}
           }
@@ -99,11 +100,11 @@ function Header({ cartData, removeFromCart }: HeaderProps) {
         </div>
 
         <div className={styles.cartAndAvatar}>
-          <div className={styles.cartIcon}>
+          <div className={styles.cartIcon} onClick={toggleCart}>
             {cartCount > 0 && (
               <div className={styles.cartBadge}>{cartCount}</div>
             )}
-            <img src={cartIcon} onClick={toggleCart} alt="cart icon" />
+            <img src={cartIcon} alt="cart icon" />
           </div>
           <img src={avatar} className={styles.avatar} alt="avatar" />
           <div className={styles.cartWrapper}>
